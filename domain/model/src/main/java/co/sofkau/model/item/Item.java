@@ -16,7 +16,7 @@ public class Item {
     private String name;
     private String type;
     private Double price;
-    private Boolean available;
+    private Integer available;
     private String description;
     private Boolean deleted;
 
