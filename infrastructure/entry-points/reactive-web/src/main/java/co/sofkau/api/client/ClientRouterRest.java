@@ -59,7 +59,7 @@ public class ClientRouterRest {
                                     description = "The id of the client",
                                     required = true,
                                     in = ParameterIn.PATH,
-                                    example = "642c56199cee5868b26f6cf5"
+                                    example = "id"
                             )
                     },
                     responses = {
@@ -120,7 +120,7 @@ public class ClientRouterRest {
                                     description = "The id of the client",
                                     required = true,
                                     in = ParameterIn.PATH,
-                                    example = "642c56199cee5868b26f6cf5"
+                                    example = "id"
                             )
                     },
                     responses = {
@@ -154,7 +154,7 @@ public class ClientRouterRest {
                                     description = "The id of the client to soft delete",
                                     required = true,
                                     in = ParameterIn.PATH,
-                                    example = "642c56199cee5868b26f6cf5"
+                                    example = "id"
                             )
                     },
                     responses = {
@@ -183,7 +183,7 @@ public class ClientRouterRest {
                                     description = "The id of the client to delete",
                                     required = true,
                                     in = ParameterIn.PATH,
-                                    example = "642c56199cee5868b26f6cf5"
+                                    example = "id"
                             )
                     },
                     responses = {
