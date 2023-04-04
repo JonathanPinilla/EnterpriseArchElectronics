@@ -23,7 +23,6 @@ import co.sofkau.usecase.updateitem.UpdateItemUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 
 @Configuration
 @ComponentScan(basePackages = "co.sofkau.usecase")
