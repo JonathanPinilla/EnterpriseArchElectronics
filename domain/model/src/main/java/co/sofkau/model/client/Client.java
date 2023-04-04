@@ -1,6 +1,5 @@
 package co.sofkau.model.client;
 
-import co.sofkau.model.cart.Cart;
 import co.sofkau.model.order.Order;
 import lombok.Builder;
 import lombok.AllArgsConstructor;
@@ -24,7 +23,6 @@ public class Client {
     private LocalDate birthDate;
     private String email;
     private String password;
-    private Cart cart;
     private List<Order> orders;
     private Boolean deleted;
 
