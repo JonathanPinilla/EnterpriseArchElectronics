@@ -7,11 +7,15 @@ import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.boot.autoconfigure.mongo.MongoPropertiesClientSettingsBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventListener;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "co.sofkau")
 public class MongoConfig {
 
     @Bean
@@ -29,5 +33,10 @@ public class MongoConfig {
         List<MongoClientSettingsBuilderCustomizer> list = new ArrayList<>();
         list.add(new MongoPropertiesClientSettingsBuilderCustomizer(properties));
         return new ReactiveMongoClientFactory(list);
+    }
+
+    @Bean
+    public ValidatingMongoEventListener validatingMongoEventListener(final LocalValidatorFactoryBean validator) {
+        return new ValidatingMongoEventListener(validator);
     }
 }
