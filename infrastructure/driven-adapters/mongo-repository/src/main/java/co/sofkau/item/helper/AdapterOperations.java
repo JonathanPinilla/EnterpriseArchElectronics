@@ -1,4 +1,4 @@
-package co.sofkau.mongo.helper;
+package co.sofkau.item.helper;
 
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
@@ -19,7 +19,7 @@ public abstract class AdapterOperations<E, D, I, R extends ReactiveCrudRepositor
     private final Function<D, E> toEntityFn;
 
     @SuppressWarnings("unchecked")
-    public AdapterOperations(R repository, ObjectMapper mapper, Function<D, E> toEntityFn) {
+    protected AdapterOperations(R repository, ObjectMapper mapper, Function<D, E> toEntityFn) {
         this.repository = repository;
         this.mapper = mapper;
         ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();

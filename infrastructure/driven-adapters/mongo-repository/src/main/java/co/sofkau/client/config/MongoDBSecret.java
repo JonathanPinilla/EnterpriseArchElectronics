@@ -1,4 +1,4 @@
-package co.sofkau.mongo.config;
+package co.sofkau.client.config;
 
 import lombok.Builder;
 import lombok.Getter;
