@@ -5,6 +5,13 @@ import co.sofkau.usecase.getallorders.GetAllOrdersUseCase;
 import co.sofkau.usecase.getorderbyid.GetOrderByIdUseCase;
 import co.sofkau.usecase.saveorder.SaveOrderUseCase;
 import co.sofkau.usecase.softdeleteorder.SoftDeleteOrderUseCase;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -20,6 +27,15 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class OrderRouterRest {
 
     @Bean
+    @RouterOperation(path = "/api/orders", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = GetAllOrdersUseCase.class,
+            beanMethod = "get",
+            operation = @Operation(operationId = "getAllOrders", tags = "Order use cases", responses = {
+                    @ApiResponse(responseCode = "200", description = "Successful operation"),
+                    @ApiResponse(responseCode = "400", description = "Bad request")
+            })
+    )
     public RouterFunction<ServerResponse> getAllOrders(GetAllOrdersUseCase getAllOrdersUseCase) {
         return route(GET("/api/orders"),
                 request -> ServerResponse.ok()
@@ -28,6 +44,24 @@ public class OrderRouterRest {
     }
 
     @Bean
+    @RouterOperation(path = "/api/orders/{id}", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = GetOrderByIdUseCase.class,
+            beanMethod = "apply",
+            operation = @Operation(operationId = "getOrderById", tags = "Order use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "id",
+                                    description = "Order id",
+                                    required = true,
+                                    example = "id"
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(responseCode = "200", description = "Successful operation"),
+                            @ApiResponse(responseCode = "400", description = "Bad request")
+                    })
+    )
     public RouterFunction<ServerResponse> getOrderById(GetOrderByIdUseCase getOrderByIdUseCase) {
         return route(GET("/api/orders/{id}"),
                 request -> getOrderByIdUseCase.apply(request.pathVariable("id"))
@@ -38,6 +72,26 @@ public class OrderRouterRest {
     }
 
     @Bean
+    @RouterOperation(path = "/api/orders", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = SaveOrderUseCase.class,
+            beanMethod = "apply",
+            operation = @Operation(operationId = "saveOrder", tags = "Order use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "order",
+                                    description = "Order to save",
+                                    required = true
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(responseCode = "201", description = "Successful operation"),
+                            @ApiResponse(responseCode = "406", description = "Not acceptable")
+                    },
+                    requestBody = @RequestBody(
+                            required = true,
+                            content = @Content(schema = @Schema(implementation = Order.class))
+                    )))
     public RouterFunction<ServerResponse> saveOrder(SaveOrderUseCase saveOrderUseCase) {
         return route(POST("/api/orders").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(Order.class)
@@ -49,6 +103,24 @@ public class OrderRouterRest {
     }
 
     @Bean
+    @RouterOperation(path = "/api/orders/{id}", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = SoftDeleteOrderUseCase.class,
+            beanMethod = "apply",
+            operation = @Operation(operationId = "deleteOrder", tags = "Order use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "id",
+                                    description = "Order id to soft delete",
+                                    required = true,
+                                    example = "id"
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(responseCode = "200", description = "Successful operation"),
+                            @ApiResponse(responseCode = "400", description = "Bad request")
+                    })
+    )
     public RouterFunction<ServerResponse> softDeleteOrder(SoftDeleteOrderUseCase softDeleteOrderUseCase) {
         return route(DELETE("/api/orders/{id}"),
                 request -> softDeleteOrderUseCase.apply(request.pathVariable("id"))
@@ -59,6 +131,24 @@ public class OrderRouterRest {
     }
 
     @Bean
+    @RouterOperation(path = "/api/orders/delete/{id}", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = SoftDeleteOrderUseCase.class,
+            beanMethod = "apply",
+            operation = @Operation(operationId = "softDeleteOrder", tags = "Order use cases",
+                    parameters = {
+                            @Parameter(
+                                    name = "id",
+                                    description = "Order id to delete",
+                                    required = true,
+                                    example = "id"
+                            )
+                    },
+                    responses = {
+                            @ApiResponse(responseCode = "200", description = "Successful operation"),
+                            @ApiResponse(responseCode = "400", description = "Bad request")
+                    })
+    )
     public RouterFunction<ServerResponse> deleteOrder(SoftDeleteOrderUseCase softDeleteOrderUseCase) {
         return route(DELETE("/api/orders/delete/{id}"),
                 request -> softDeleteOrderUseCase.apply(request.pathVariable("id"))
