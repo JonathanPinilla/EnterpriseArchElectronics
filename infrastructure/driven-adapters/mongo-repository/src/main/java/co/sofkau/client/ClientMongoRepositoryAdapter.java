@@ -1,7 +1,6 @@
 package co.sofkau.client;
 
 import co.sofkau.client.data.ClientData;
-import co.sofkau.client.helper.AdapterOperations;
 import co.sofkau.model.client.Client;
 import co.sofkau.model.client.gateways.ClientGateway;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +44,7 @@ public class ClientMongoRepositoryAdapter implements ClientGateway {
                 .map(clientData -> {
                     clientData.setEmail(client.getEmail());
                     clientData.setPassword(client.getPassword());
+                    clientData.setOrders(client.getOrders());
                     return mapper.map(client, ClientData.class);
                 })
                 .flatMap(this.repository::save)

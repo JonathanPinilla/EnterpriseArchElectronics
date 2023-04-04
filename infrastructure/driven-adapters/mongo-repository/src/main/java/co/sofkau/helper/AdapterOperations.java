@@ -1,4 +1,4 @@
-package co.sofkau.item.helper;
+package co.sofkau.helper;
 
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
