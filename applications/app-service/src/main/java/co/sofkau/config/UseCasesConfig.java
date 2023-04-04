@@ -15,6 +15,7 @@ import co.sofkau.usecase.getorderbyid.GetOrderByIdUseCase;
 import co.sofkau.usecase.saveclient.SaveClientUseCase;
 import co.sofkau.usecase.saveitem.SaveItemUseCase;
 import co.sofkau.usecase.saveorder.SaveOrderUseCase;
+import co.sofkau.usecase.sellitem.SellItemUseCase;
 import co.sofkau.usecase.softdeleteclient.SoftDeleteClientUseCase;
 import co.sofkau.usecase.softdeleteitem.SoftDeleteItemUseCase;
 import co.sofkau.usecase.softdeleteorder.SoftDeleteOrderUseCase;
@@ -78,6 +79,11 @@ public class UseCasesConfig {
         @Bean
         public UpdateItemUseCase updateItemUseCase(ItemGateway itemGateway) {
                 return new UpdateItemUseCase(itemGateway);
+        }
+
+        @Bean
+        SellItemUseCase sellItemUseCase(ItemGateway itemGateway) {
+                return new SellItemUseCase(itemGateway);
         }
 
         @Bean
