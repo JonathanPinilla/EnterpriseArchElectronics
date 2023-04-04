@@ -13,7 +13,7 @@ public class SellItemUseCase implements BiFunction<String, Integer, Mono<Item>> 
     private final ItemGateway itemGateway;
 
     @Override
-    public Mono<Item> apply(String id, Integer amount) {
-        return itemGateway.sell(id, amount);
+    public Mono<Item> apply(String id, Integer quantity) {
+        return itemGateway.sell(id, quantity);
     }
 }

@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @Repository
 @RequiredArgsConstructor
-public class ItemMongoRepositoryAdapter implements ItemGateway{
+public class ItemMongoRepositoryAdapter implements ItemGateway {
 
     private final ItemMongoDBRepository repository;
     private final ObjectMapper mapper;
@@ -58,9 +58,12 @@ public class ItemMongoRepositoryAdapter implements ItemGateway{
         return this.repository.findById(id)
                 .switchIfEmpty(Mono.error(new RuntimeException("Item with id: " + id + " not found")))
                 .map(itemData -> {
-                            itemData.setAvailable(itemData.getAvailable() - quantity);
-                            return mapper.map(itemData, ItemData.class);
-                        })
+                    if(itemData.getAvailable() < quantity) {
+                        throw new RuntimeException("Not enough items available");
+                    }
+                    itemData.setAvailable(itemData.getAvailable() - quantity);
+                    return mapper.map(itemData, ItemData.class);
+                })
                 .flatMap(this.repository::save)
                 .map(itemData -> mapper.map(itemData, Item.class))
                 .onErrorResume(error -> Mono.error(new RuntimeException("Error selling item: " + error)));
