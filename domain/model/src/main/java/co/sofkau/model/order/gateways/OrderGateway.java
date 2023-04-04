@@ -9,6 +9,7 @@ public interface OrderGateway {
     public Flux<Order> getAll();
     public Mono<Order> getById(String id);
     public Mono<Order> save(Order order);
+    public Mono<Void> softDelete(String id);
     public Mono<Void> delete(String id);
 
 }
