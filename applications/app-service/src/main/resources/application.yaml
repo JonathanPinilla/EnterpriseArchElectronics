@@ -23,3 +23,6 @@ management:
     health:
       probes:
         enabled: true
+springdoc:
+  swagger-ui:
+    path: /api/electronics-store/swagger-ui.html
