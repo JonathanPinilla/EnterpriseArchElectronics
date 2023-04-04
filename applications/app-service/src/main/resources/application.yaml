@@ -13,4 +13,13 @@ spring:
     include: null
   data:
     mongodb:
-      uri: "mongodb://localhost:27017/test"
+      uri: "mongodb+srv://JonathanP:adminPassword@cluster0.xrps5.mongodb.net/EnterpriseArchElectronics?retryWrites=true&w=majority"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
