@@ -19,7 +19,6 @@ public class OrderData {
     private String id;
 
     @NotNull(message = "Price is required")
-    @Pattern(regexp = "^[0-9]*$", message = "Price should contain only numbers")
     private Double price;
 
     @NotNull(message = "Address is required")

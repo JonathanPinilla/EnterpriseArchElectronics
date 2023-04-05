@@ -20,7 +20,6 @@ public class ItemData {
 
     @NotNull(message = "Name is required")
     @Size(min = 1, max = 15, message = "Name should be between 1 and 15 characters")
-    @Pattern(regexp = "^[a-zA-Z]*$", message = "Name should contain only alphabets")
     private String name;
 
     @NotNull(message = "Type is required")
@@ -29,15 +28,13 @@ public class ItemData {
     private String type;
 
     @NotNull(message = "Price is required")
-    @Pattern(regexp = "^[0-9]*$", message = "Price should contain only numbers")
     private Double price;
 
     @NotNull(message = "Available is required")
-    @Pattern(regexp = "^[0-9]*$", message = "Available should contain only numbers")
     private Integer available;
 
     @NotNull(message = "Description is required")
-    @Size(min = 1, max = 40, message = "Description should be between 1 and 40 characters")
+    @Size(min = 1, max = 255, message = "Description should be between 1 and 40 characters")
     private String description;
 
     private Boolean deleted = false;
