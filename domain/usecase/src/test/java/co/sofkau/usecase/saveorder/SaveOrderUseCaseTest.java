@@ -32,6 +32,7 @@ class SaveOrderUseCaseTest {
 
         var order = new Order(
                 "1",
+                "clientId",
                 10.0,
                 "address",
                 "213123123",

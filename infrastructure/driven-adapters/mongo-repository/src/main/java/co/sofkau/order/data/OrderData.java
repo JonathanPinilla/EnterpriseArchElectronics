@@ -18,6 +18,9 @@ public class OrderData {
     @Id
     private String id;
 
+    @NotNull(message = "Client id is required")
+    private String clientId;
+
     @NotNull(message = "Price is required")
     private Double price;
 

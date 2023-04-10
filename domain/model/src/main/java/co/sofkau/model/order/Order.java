@@ -16,6 +16,7 @@ import java.util.List;
 public class Order {
 
     private String id;
+    private String clientId;
     private Double price;
     private String address;
     private String contactNumber;

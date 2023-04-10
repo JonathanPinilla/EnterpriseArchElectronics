@@ -30,6 +30,7 @@ class GetOrderByIdUseCaseTest {
 
         var order = new Order(
                 "1",
+                "clientId",
                 100.0,
                 "address",
                 "123456789",

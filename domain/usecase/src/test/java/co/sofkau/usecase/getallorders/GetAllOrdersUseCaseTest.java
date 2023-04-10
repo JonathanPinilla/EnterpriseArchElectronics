@@ -32,6 +32,7 @@ class GetAllOrdersUseCaseTest {
 
         var order = new Order(
                 "id",
+                "clientId",
                 10.0,
                 "address",
                 "123213123",
