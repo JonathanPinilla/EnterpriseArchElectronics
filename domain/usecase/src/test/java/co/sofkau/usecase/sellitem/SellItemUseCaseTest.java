@@ -35,6 +35,7 @@ class SellItemUseCaseTest {
                 100.0,
                 10,
                 "description",
+                "image",
                 false
         );
 
@@ -45,6 +46,7 @@ class SellItemUseCaseTest {
                 100.0,
                 5,
                 "description",
+                "image",
                 false
         );
 

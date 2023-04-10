@@ -35,6 +35,7 @@ class UpdateItemUseCaseTest {
                 100.0,
                 10,
                 "description",
+                "image",
                 false
         );
 

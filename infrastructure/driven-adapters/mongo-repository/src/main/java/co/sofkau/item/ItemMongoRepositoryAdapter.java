@@ -46,6 +46,7 @@ public class ItemMongoRepositoryAdapter implements ItemGateway {
                     itemData.setPrice(item.getPrice());
                     itemData.setType(item.getType());
                     itemData.setDescription(item.getDescription());
+                    itemData.setImage(item.getImage());
                     return mapper.map(item, ItemData.class);
                 })
                 .flatMap(this.repository::save)

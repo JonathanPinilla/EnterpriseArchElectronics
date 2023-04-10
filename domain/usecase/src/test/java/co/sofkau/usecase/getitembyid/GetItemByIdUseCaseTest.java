@@ -35,6 +35,7 @@ class GetItemByIdUseCaseTest {
                 100.0,
                 11,
                 "description",
+                "image",
                 false
         );
 

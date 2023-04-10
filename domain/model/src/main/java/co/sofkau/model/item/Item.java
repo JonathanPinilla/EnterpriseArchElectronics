@@ -18,6 +18,7 @@ public class Item {
     private Double price;
     private Integer available;
     private String description;
+    private String image;
     private Boolean deleted;
 
 }

@@ -35,6 +35,7 @@ class GetAllItemsUseCaseTest {
                 1.0,
                 10,
                 "description",
+                "image",
                 false
         );
 

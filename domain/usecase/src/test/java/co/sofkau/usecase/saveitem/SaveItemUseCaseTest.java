@@ -36,6 +36,7 @@ class SaveItemUseCaseTest {
                 10.0,
                 10,
                 "description",
+                "image",
                 false
         );
 

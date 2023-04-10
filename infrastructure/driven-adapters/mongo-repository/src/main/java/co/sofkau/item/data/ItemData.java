@@ -37,6 +37,9 @@ public class ItemData {
     @Size(min = 1, max = 255, message = "Description should be between 1 and 40 characters")
     private String description;
 
+    @NotNull(message = "image url is required")
+    private String image;
+
     private Boolean deleted = false;
 
     public ItemData(String name, String type, Double price, Integer available, String description) {
